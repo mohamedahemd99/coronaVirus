@@ -1,0 +1,10 @@
+{
+    "editor.cursorSmoothCaretAnimation": true,
+    "editor.cursorBlinking": "solid",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "diffEditor.codeLens": true,
+    "editor.minimap.size": "fill",
+    "files.autoSave": "afterDelay",
+    "editor.wordWrap": "on"
+}
