@@ -285,7 +285,7 @@ class _ScreenQState extends State<ScreenQ> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const HomePage(),
+                            builder: (context) => const HomeScreen(),
                           ));
                     },
                     child: Container(
@@ -406,7 +406,7 @@ class _ScreenQState extends State<ScreenQ> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const HomePage(),
+                            builder: (context) => const HomeScreen(),
                           ));
                     },
                     child: Container(
@@ -496,7 +496,7 @@ class _ScreenQState extends State<ScreenQ> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const HomePage(),
+                            builder: (context) => const HomeScreen(),
                           ));
                     },
                     child: Container(

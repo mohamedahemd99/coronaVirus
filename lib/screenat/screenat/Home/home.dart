@@ -3,147 +3,124 @@
 import 'package:covid_infected_helper/screenat/screenat/Home/launcher.dart';
 import 'package:flutter/material.dart';
 import '../../../constants.dart';
-import '../../../navbar.dart';
+import '../../../drawer.dart';
 import '../articles/articles.dart';
 import '../articles/aticles_page.dart';
 import '../articles/cards/cards.dart';
 import 'package:covid_infected_helper/screenat/screenat/quests/questions.dart';
 
 //for appbar
-class HomePage extends StatelessWidget {
-  const HomePage({Key key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      drawer: const NavBar(),
-      appBar: AppBar(
-        elevation: 0,
-        flexibleSpace: Container(decoration: bgGradient),
-        title: image,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.settings, color: bg),
-            onPressed: () {},
-          ),
-        ],
-      ),
-      body: const HomeScreen(),
-    );
-  }
-}
+
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: ListView(
-        padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
-        children: [
-          //design of app bar
-          Container(
-            height: 20,
-            width: double.infinity,
-            decoration: const BoxDecoration(
-              color: mainColor,
-              borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(50),
-                  bottomRight: Radius.circular(50)),
-            ),
+    return ListView(
+      padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+      children: [
+        //design of app bar
+        Container(
+          height: 20,
+          width: double.infinity,
+          decoration: const BoxDecoration(
+            color: mainColor,
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(50),
+                bottomRight: Radius.circular(50)),
           ),
-          const SizedBox(
-            height: 4,
+        ),
+        const SizedBox(
+          height: 4,
+        ),
+        //for linkat
+        Container(
+          margin: const EdgeInsets.all(20),
+          height: 226,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                offset: const Offset(0, 8),
+                blurRadius: 24,
+                color: shadow,
+              )
+            ],
           ),
-          //for linkat
-          Container(
-            margin: const EdgeInsets.all(20),
-            height: 226,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  offset: const Offset(0, 8),
-                  blurRadius: 24,
-                  color: shadow,
-                )
-              ],
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(height: 8),
+              const Text('Covid Infected Helper.', style: subtxtStyle),
+              const SizedBox(height: 8),
+              //link of ministry page
+              InkWell(
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                      builder: (context) => const URLLauncher()),
+                ),
+                child: const CoverLink(
+                  text: 'To get the vaccine, please click here',
+                ),
+              ),
+              const SizedBox(height: 15),
+              //link for questions
+              InkWell(
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const Questions())),
+                child: const CoverLink(
+                  text: 'Check your self after taking vaccine',
+                ),
+              ),
+              const SizedBox(height: 8),
+              const Text('Just for You.', style: subtxtStyle),
+              const SizedBox(height: 8),
+            ],
+          ),
+        ),
+        //the updates in home page
+        const Padding(
+          padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
+          child: Statistic(),
+        ),
+        //text Articles
+        Padding(
+          padding: const EdgeInsets.only(
+            bottom: 10,
+            top: 10,
+            left: 20,
+          ),
+          child: TextButton(
+            onPressed: () => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const ArticlePage())),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                const SizedBox(height: 8),
-                const Text('Covid Infected Helper.', style: subtxtStyle),
-                const SizedBox(height: 8),
-                //link of ministry page
-                InkWell(
-                  onTap: () => Navigator.of(context).push(
-                    MaterialPageRoute(
-                        builder: (context) => const URLLauncher()),
-                  ),
-                  child: const CoverLink(
-                    text: 'To get the vaccine, please click here',
-                  ),
+                SizedBox(
+                  child: Text('ARTICLES:',
+                      style: titleStyle.copyWith(color: icons)),
+                  width: 70,
                 ),
-                const SizedBox(height: 15),
-                //link for questions
-                InkWell(
-                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const Questions())),
-                  child: const CoverLink(
-                    text: 'Check your self after taking vaccine',
-                  ),
-                ),
-                const SizedBox(height: 8),
-                const Text('Just for You.', style: subtxtStyle),
-                const SizedBox(height: 8),
               ],
             ),
           ),
-          //the updates in home page
-          const Padding(
-            padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
-            child: Statistic(),
-          ),
-          //text Articles
-          Padding(
-            padding: const EdgeInsets.only(
-              bottom: 10,
-              top: 10,
-              left: 20,
-            ),
-            child: TextButton(
-              onPressed: () => Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const ArticlePage())),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    child: Text('ARTICLES:',
-                        style: titleStyle.copyWith(color: icons)),
-                    width: 70,
-                  ),
-                ],
-              ),
+        ),
+        //articles body
+        Container(
+          height: 500,
+          color: bg,
+          child: ListView.builder(
+            itemCount: articles.length,
+            itemBuilder: (context, index) => Cards(
+              article: articles[index],
+              itemIndex: index,
+              Press: () {},
             ),
           ),
-          //articles body
-          Container(
-            height: 500,
-            color: bg,
-            child: ListView.builder(
-              itemCount: articles.length,
-              itemBuilder: (context, index) => Cards(
-                article: articles[index],
-                itemIndex: index,
-                Press: () {},
-              ),
-            ),
-          )
-        ],
-      ),
+        )
+      ],
     );
   }
 }

@@ -25,6 +25,10 @@ dependencies:
   url_launcher: ^6.0.20
   progress_dialog: ^1.2.4-nullsafety.2
   intl: ^0.17.0
+  dio:
+  webview_flutter:
+  conditional_builder:
+
 
 dev_dependencies:
   flutter_test:

@@ -1,4 +1,5 @@
 // @dart=2.9
+import 'package:covid_infected_helper/screenat/screenat/layout/layout_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../constants.dart';
@@ -197,7 +198,7 @@ class _LoginState extends State<Login> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                const HomePage()));
+                                                 LayOutScreen()));
                                   },
                                   child: Container(
                                     alignment: Alignment.center,

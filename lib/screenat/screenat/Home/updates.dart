@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
-import '../../../navbar.dart';
+import '../../../drawer.dart';
 
 class Updates extends StatelessWidget {
   const Updates({Key key}) : super(key: key);
